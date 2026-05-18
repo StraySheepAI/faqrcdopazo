@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ Admin · R.C. Dopazo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0d0618;--bg2:rgba(20,10,38,0.9);--bg3:rgba(30,15,55,0.95);
+      --gold:#7a6235;--gold-l:#a8895a;--gold-b:rgba(120,98,53,0.3);
+      --pink:#e870a0;--pink-b:rgba(232,112,160,0.25);
+      --text:#ede6d6;--muted:#a097b4;--danger:#e85555;
+    }
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh;padding:2rem}
+    h1{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold-l);letter-spacing:0.08em;margin-bottom:0.25rem}
+    .subtitle{font-size:11px;color:var(--muted);letter-spacing:0.02em;margin-bottom:2rem}
+
+    /* TOP BAR */
+    .topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+    .topbar-right{display:flex;gap:0.75rem;flex-wrap:wrap}
+
+    /* BUTTONS */
+    .btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:20px;cursor:pointer;transition:all .25s;border:none}
+    .btn-gold{background:rgba(120,98,53,0.15);border:1px solid var(--gold-b);color:var(--gold-l)}
+    .btn-gold:hover{background:rgba(120,98,53,0.3);box-shadow:0 0 12px rgba(120,98,53,0.3)}
+    .btn-pink{background:rgba(232,112,160,0.1);border:1px solid var(--pink-b);color:var(--pink)}
+    .btn-pink:hover{background:rgba(232,112,160,0.2);box-shadow:0 0 12px rgba(232,112,160,0.25)}
+    .btn-danger{background:rgba(232,85,85,0.1);border:1px solid rgba(232,85,85,0.3);color:var(--danger);font-size:8px;padding:0.3rem 0.8rem}
+    .btn-danger:hover{background:rgba(232,85,85,0.2)}
+    .btn-sm{font-size:8px;padding:0.3rem 0.8rem}
+
+    /* SECTIONS */
+    .sections{display:flex;flex-direction:column;gap:1.5rem}
+    .section-card{background:var(--bg2);border:0.5px solid var(--gold-b);border-radius:12px;overflow:hidden}
+    .section-head{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;background:rgba(120,98,53,0.06);border-bottom:0.5px solid var(--gold-b);gap:1rem}
+    .section-label-wrap{display:flex;align-items:center;gap:0.75rem;flex:1}
+    .section-dot{width:5px;height:5px;background:var(--pink);border-radius:50%;flex-shrink:0}
+    .section-name-input{background:transparent;border:none;color:var(--gold-l);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;flex:1;outline:none;min-width:0}
+    .section-name-input:focus{border-bottom:1px solid var(--gold-b)}
+    .section-id{font-size:9px;color:var(--muted);opacity:0.6;font-family:monospace}
+    .section-actions{display:flex;gap:0.5rem;flex-shrink:0}
+
+    /* QUESTIONS */
+    .questions{padding:1rem 1.25rem;display:flex;flex-direction:column;gap:0.75rem}
+    .q-item{background:var(--bg3);border:0.5px solid rgba(120,98,53,0.2);border-radius:8px;padding:1rem}
+    .q-header{display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;margin-bottom:0.6rem}
+    .q-num{font-size:9px;color:var(--muted);opacity:0.5;flex-shrink:0;margin-top:3px;font-family:monospace}
+    label{display:block;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem}
+    input[type=text], textarea{width:100%;background:rgba(255,255,255,0.04);border:0.5px solid rgba(120,98,53,0.25);border-radius:6px;padding:0.55rem 0.75rem;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:border-color .2s;resize:vertical}
+    input[type=text]:focus, textarea:focus{border-color:rgba(120,98,53,0.5)}
+    textarea{min-height:80px;line-height:1.7}
+    .q-fields{display:flex;flex-direction:column;gap:0.6rem}
+
+    /* ADD Q BUTTON */
+    .add-q-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:0.6rem;border:0.5px dashed rgba(120,98,53,0.3);border-radius:8px;background:transparent;color:var(--muted);font-size:11px;cursor:pointer;transition:all .2s;margin-top:0.25rem}
+    .add-q-btn:hover{border-color:var(--gold-b);color:var(--gold-l);background:rgba(120,98,53,0.06)}
+
+    /* ADD SECTION */
+    .add-section-wrap{text-align:center;padding:1rem 0}
+
+    /* EXPORT AREA */
+    .export-area{margin-top:2rem;background:var(--bg2);border:0.5px solid var(--gold-b);border-radius:12px;padding:1.5rem}
+    .export-title{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.25em;color:var(--gold-l);text-transform:uppercase;margin-bottom:1rem}
+    .export-instructions{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:1.25rem}
+    .export-instructions strong{color:var(--text)}
+    .export-instructions ol{padding-left:1.2rem;margin-top:0.5rem}
+    .export-instructions li{margin-bottom:0.3rem}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:2rem;right:2rem;background:rgba(120,98,53,0.9);color:var(--text);font-size:12px;padding:0.75rem 1.25rem;border-radius:8px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;font-family:'Cinzel',serif;letter-spacing:0.1em}
+    .toast.show{opacity:1}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <h1>FAQ · Panel de edición</h1>
+    <div class="subtitle">R.C. Dopazo · Editá preguntas y respuestas, luego exportá el JSON y subilo a GitHub.</div>
+  </div>
+  <div class="topbar-right">
+    <button class="btn btn-gold" onclick="exportJSON()">↓ Exportar faq-data.json</button>
+    <button class="btn btn-pink" onclick="window.open('faq.html','_blank')">↗ Ver FAQ</button>
+  </div>
+</div>
+
+<div class="sections" id="sections-container"></div>
+
+<div class="add-section-wrap">
+  <button class="btn btn-gold" onclick="addSection()">+ Agregar sección</button>
+</div>
+
+<div class="export-area">
+  <div class="export-title">¿Cómo guardar los cambios?</div>
+  <div class="export-instructions">
+    <strong>Flujo de trabajo:</strong>
+    <ol>
+      <li>Editá las preguntas y respuestas acá arriba.</li>
+      <li>Apretá <strong>"↓ Exportar faq-data.json"</strong> — se descarga el archivo.</li>
+      <li>Reemplazá el <strong>faq-data.json</strong> en tu repo de GitHub con el nuevo.</li>
+      <li>Vercel lo deploya automáticamente. Listo.</li>
+    </ol>
+  </div>
+  <button class="btn btn-gold" onclick="exportJSON()">↓ Exportar faq-data.json</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Estado ──
+let data = null;
+
+// ── Cargar datos desde faq-data.json ──
+async function loadData() {
+  try {
+    const res = await fetch('faq-data.json?' + Date.now());
+    data = await res.json();
+  } catch(e) {
+    // Si no puede cargar, usa datos vacíos
+    data = { secciones: [] };
+  }
+  render();
+}
+
+// ── Render completo ──
+function render() {
+  const container = document.getElementById('sections-container');
+  container.innerHTML = '';
+  data.secciones.forEach((sec, si) => {
+    container.appendChild(renderSection(sec, si));
+  });
+}
+
+function renderSection(sec, si) {
+  const card = document.createElement('div');
+  card.className = 'section-card';
+  card.innerHTML = `
+    <div class="section-head">
+      <div class="section-label-wrap">
+        <span class="section-dot"></span>
+        <input class="section-name-input" type="text" value="${esc(sec.label)}" 
+          onchange="data.secciones[${si}].label = this.value" 
+          placeholder="Nombre de sección"/>
+        <span class="section-id">#${sec.id}</span>
+      </div>
+      <div class="section-actions">
+        ${si > 0 ? `<button class="btn btn-gold btn-sm" onclick="moveSection(${si},-1)">↑</button>` : ''}
+        ${si < data.secciones.length-1 ? `<button class="btn btn-gold btn-sm" onclick="moveSection(${si},1)">↓</button>` : ''}
+        <button class="btn btn-danger" onclick="removeSection(${si})">✕ Eliminar</button>
+      </div>
+    </div>
+    <div class="questions" id="qs-${si}">
+      ${sec.preguntas.map((p,pi) => renderQuestion(p,si,pi)).join('')}
+      <button class="add-q-btn" onclick="addQuestion(${si})">+ Agregar pregunta</button>
+    </div>
+  `;
+  return card;
+}
+
+function renderQuestion(p, si, pi) {
+  return `
+    <div class="q-item" id="q-${si}-${pi}">
+      <div class="q-header">
+        <span class="q-num">P${pi+1}</span>
+        <div style="display:flex;gap:0.4rem">
+          ${pi > 0 ? `<button class="btn btn-gold btn-sm" onclick="moveQuestion(${si},${pi},-1)">↑</button>` : ''}
+          ${pi < data.secciones[si].preguntas.length-1 ? `<button class="btn btn-gold btn-sm" onclick="moveQuestion(${si},${pi},1)">↓</button>` : ''}
+          <button class="btn btn-danger" onclick="removeQuestion(${si},${pi})">✕</button>
+        </div>
+      </div>
+      <div class="q-fields">
+        <div>
+          <label>Pregunta</label>
+          <input type="text" value="${esc(p.q)}" 
+            oninput="data.secciones[${si}].preguntas[${pi}].q = this.value"
+            placeholder="¿Cuál es tu pregunta?"/>
+        </div>
+        <div>
+          <label>Respuesta</label>
+          <textarea 
+            oninput="data.secciones[${si}].preguntas[${pi}].a = this.value"
+            placeholder="Escribí la respuesta acá...">${esc(p.a)}</textarea>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function esc(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── Acciones ──
+function addSection() {
+  const id = 'seccion-' + Date.now();
+  data.secciones.push({ id, label: 'Nueva sección', preguntas: [{ q: '', a: '' }] });
+  render();
+  toast('Sección agregada');
+}
+
+function removeSection(si) {
+  if (!confirm('¿Eliminar esta sección y todas sus preguntas?')) return;
+  data.secciones.splice(si, 1);
+  render();
+  toast('Sección eliminada');
+}
+
+function moveSection(si, dir) {
+  const target = si + dir;
+  if (target < 0 || target >= data.secciones.length) return;
+  [data.secciones[si], data.secciones[target]] = [data.secciones[target], data.secciones[si]];
+  render();
+}
+
+function addQuestion(si) {
+  data.secciones[si].preguntas.push({ q: '', a: '' });
+  render();
+  toast('Pregunta agregada');
+}
+
+function removeQuestion(si, pi) {
+  if (!confirm('¿Eliminar esta pregunta?')) return;
+  data.secciones[si].preguntas.splice(pi, 1);
+  render();
+  toast('Pregunta eliminada');
+}
+
+function moveQuestion(si, pi, dir) {
+  const arr = data.secciones[si].preguntas;
+  const target = pi + dir;
+  if (target < 0 || target >= arr.length) return;
+  [arr[pi], arr[target]] = [arr[target], arr[pi]];
+  render();
+}
+
+// ── Exportar JSON ──
+function exportJSON() {
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'faq-data.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('✓ faq-data.json descargado');
+}
+
+// ── Toast ──
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── Init ──
+loadData();
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+{
+  "secciones": [
+    {
+      "id": "ecosistema",
+      "label": "El ecosistema R.C. Dopazo",
+      "preguntas": [
+        {
+          "q": "¿Qué es este sitio?",
+          "a": "Este es el espacio central de R.C. Dopazo — autora, creadora y arquitecta de sistemas creativos. Acá conviven libros, universos narrativos, productos digitales, experiencias interactivas, música y una línea de consultoría estratégica. No es solo una tienda. No es solo un blog. Es el mapa de un ecosistema en expansión."
+        },
+        {
+          "q": "¿Qué puedo encontrar acá?",
+          "a": "Libros y eBooks, accesos a universos narrativos, experiencias interactivas con QR y portales digitales, cartas y juegos simbólicos, y una línea consultiva orientada a procesos, IA y sistemas. Todo construido bajo el mismo ADN: ver lo invisible, jugar con conciencia y transformar."
+        },
+        {
+          "q": "¿Cómo se conectan los libros, la consultoría, la tecnología y MPA?",
+          "a": "Son puertas del mismo edificio. MPA es la marca madre que les da coherencia — una filosofía de transformación aplicada a distintos formatos. Un libro de Stray Sheep, una sesión de MPA Flow y una experiencia interactiva pueden parecer cosas distintas, pero comparten el mismo principio: detectar fricción, ordenar el caos y transformar."
+        },
+        {
+          "q": "¿Por dónde empiezo si llegué por primera vez?",
+          "a": "Depende de lo que te trajo. Si llegaste por los libros, empezá por Stray Sheep. Si llegaste por el universo narrativo, entrá a MPA. Si te interesa la consultoría estratégica con IA y procesos, mirá MPA Flow. Y si no sabés por qué llegaste — eso también es una señal."
+        }
+      ]
+    },
+    {
+      "id": "mpa",
+      "label": "MPA como marca madre",
+      "preguntas": [
+        {
+          "q": "¿Qué es MPA?",
+          "a": "MPA es la sigla de Magia para Atrevidos — y también es algo más. Es la marca madre del ecosistema. Bajo esa sigla conviven distintas puertas: una línea narrativa y editorial, experiencias interactivas, juegos y cartas simbólicas, y una línea consultiva estratégica. No todas hablan con el mismo tono porque no cumplen la misma función. Todas comparten el mismo ADN."
+        },
+        {
+          "q": "¿Qué diferencia hay entre MPA y Magia para Atrevidos?",
+          "a": "Magia para Atrevidos es el origen simbólico y narrativo. Tiene una carga mística, iniciática y filosófica. MPA como sigla permite que el ecosistema se expanda hacia líneas más funcionales, editoriales o profesionales sin perder el ADN. Pensalo como la diferencia entre el nombre completo y el apodo que usás cuando trabajás."
+        },
+        {
+          "q": "¿Cómo se organiza el ecosistema MPA?",
+          "a": "En líneas con funciones distintas: MPA Universo agrupa la expansión narrativa e iniciática. MPA Editorial agrupa libros, colecciones y productos editoriales como Stray Sheep y ¡Qué Embole! MPA Lude agrupa el aspecto lúdico: tarot, cartas, juegos y guías interactivas. MPA Flow es la línea consultiva y estratégica. MPA Transmuta vincula experiencias y procesos de cambio."
+        },
+        {
+          "q": "¿Necesito entender todo el mapa para empezar?",
+          "a": "No. El mapa existe para orientarte, no para complicarte. Entrás por donde podés y el sistema te va mostrando el resto. Nadie llega sabiendo todo — y los que dicen que sí, generalmente se perdieron lo más interesante."
+        },
+        {
+          "q": "¿Qué significa Evigila · Lude · Transmuta?",
+          "a": "Son las tres marcas del sistema MPA. Evigila: despertá, mirá, prestá atención. Lude: jugá, explorá, no te tomes todo tan en serio. Transmuta: cambiá de forma, convertí lo que freina en lo que impulsa. No es un eslogan. Es una secuencia."
+        }
+      ]
+    },
+    {
+      "id": "libros",
+      "label": "Libros, eBooks y productos digitales",
+      "preguntas": [
+        {
+          "q": "¿Qué libros o productos digitales puedo comprar?",
+          "a": "Por ahora el primer título de la colección Stray Sheep — ¡Qué Embole! — está en prelanzamiento. Podés reservar tu lugar con precio exclusivo antes del lanzamiento oficial. Pronto se suman más títulos de la línea editorial MPA."
+        },
+        {
+          "q": "¿Qué es ¡Qué Embole!?",
+          "a": "El primer título de la colección Stray Sheep. Una historia gráfica, breve y de filo directo. Una vez que lo leés, no podés desverlo. Incluye accesos a experiencias interactivas, portales digitales y contenido que va más allá de las páginas."
+        },
+        {
+          "q": "¿Cómo recibo mi eBook después de comprarlo?",
+          "a": "Una vez completada la compra, recibís un mail con el link de descarga al archivo digital. El acceso es inmediato. Si en 30 minutos no llegó nada, revisá la carpeta de spam y, si sigue sin aparecer, escribinos directo."
+        },
+        {
+          "q": "¿Puedo leerlo desde el celular?",
+          "a": "Sí. El eBook está en formato PDF, compatible con cualquier dispositivo — celular, tablet o computadora. Para aprovechar los accesos interactivos y links internos, recomendamos abrirlo desde un navegador o lector de PDF que soporte links activos."
+        },
+        {
+          "q": "¿Puedo imprimir el eBook?",
+          "a": "Podés imprimirlo para uso personal. Los accesos interactivos y QR siguen funcionando desde la versión impresa — en ese caso, escaneás con la cámara del celular en vez de cliquear."
+        }
+      ]
+    },
+    {
+      "id": "portales",
+      "label": "Portales, QR y experiencias interactivas",
+      "preguntas": [
+        {
+          "q": "¿Qué son los portales del libro?",
+          "a": "Son accesos dentro del libro que llevan a experiencias digitales complementarias — páginas interactivas, tests, universos narrativos ampliados. El libro no termina en la última página. Es una puerta, no un destino."
+        },
+        {
+          "q": "¿Cómo funcionan los QR y accesos dentro del libro?",
+          "a": "En la versión impresa: escaneás el QR con la cámara del celular y se abre directamente en el navegador. En la versión digital: los accesos señalados son links activos — tocás o clicás y van solos. Si tu lector de PDF no abre los links, probá desde el navegador o desde otra app lectora."
+        },
+        {
+          "q": "¿Qué hago si un acceso no abre?",
+          "a": "Primero probá desde otro visor de PDF, navegador o dispositivo. Si el problema persiste, escribinos con el detalle de qué acceso no abre y desde qué dispositivo. Lo resolvemos."
+        },
+        {
+          "q": "¿Qué es el mini-test de Bolas Tristes?",
+          "a": "Una experiencia interactiva dentro del universo MPA. Cuatro preguntas, tres resultados posibles y algo que no se revela hasta el final. Una puerta de entrada al sistema, disfrazada de juego. No spoileamos más que eso."
+        },
+        {
+          "q": "¿Las experiencias interactivas tienen costo?",
+          "a": "Los portales y accesos incluidos en el libro forman parte de la compra. No tienen costo adicional. Algunas experiencias del ecosistema MPA pueden tener acceso libre o requerir registro — en cada caso se aclara antes de entrar."
+        }
+      ]
+    },
+    {
+      "id": "proyectos",
+      "label": "Proyectos creativos",
+      "preguntas": [
+        {
+          "q": "¿Qué es Stray Sheep?",
+          "a": "Una línea narrativa y editorial conectada al universo MPA. Su voz es más directa, gráfica y filosa. Stray Sheep no explica lo evidente — lo señala. El primer título es ¡Qué Embole!, pero hay más en camino."
+        },
+        {
+          "q": "¿Qué relación tiene Stray Sheep con MPA?",
+          "a": "Stray Sheep es una de las puertas del ecosistema MPA Editorial. Comparte el ADN — transformación, conciencia, humor seco — pero tiene voz propia. Puede leerse sola, sin saber nada del universo mayor. O puede ser la primera grieta en la patraña."
+        },
+        {
+          "q": "¿También hay música o contenido audiovisual?",
+          "a": "Sí. El ecosistema R.C. Dopazo incluye música y contenido audiovisual. Algunas piezas funcionan como extensiones del universo narrativo; otras son proyectos independientes."
+        },
+        {
+          "q": "¿Los proyectos están conectados entre sí?",
+          "a": "Sí, aunque cada uno puede recorrerse de forma independiente. Hay referencias cruzadas, personajes que reaparecen, simbologías compartidas. El que entra por una puerta y presta atención, empieza a ver el patrón."
+        }
+      ]
+    },
+    {
+      "id": "flow",
+      "label": "Consultoría · MPA Flow",
+      "preguntas": [
+        {
+          "q": "¿Qué es MPA Flow?",
+          "a": "La línea estratégica y consultiva del ecosistema MPA. Toma el mismo principio de fondo — ordenar lo invisible, detectar fricción y transformar sistemas — pero lo aplica a procesos, proyectos, negocios, equipos e integración de IA. Menos portal iniciático, más arquitectura de acción."
+        },
+        {
+          "q": "¿En qué se diferencia MPA Flow de Magia para Atrevidos?",
+          "a": "El lenguaje y la función. Magia para Atrevidos invita a cruzar un portal simbólico. MPA Flow ordena lo que está frente a vos: procesos, decisiones, sistemas, equipos. El ADN es el mismo; la aplicación es distinta. No hace falta creer en la magia para que funcione."
+        },
+        {
+          "q": "¿Para quién es la consultoría?",
+          "a": "Para creadores, emprendedores, equipos y organizaciones que sienten que algo no fluye — pero no saben exactamente dónde está la fricción. También para quienes quieren integrar IA de forma coherente en sus procesos sin perder la identidad de lo que hacen."
+        },
+        {
+          "q": "¿MPA Flow es solo para empresas?",
+          "a": "No. Trabaja con proyectos personales, marcas individuales, equipos pequeños y organizaciones medianas. Lo que importa no es el tamaño — es que haya un sistema que necesita orden."
+        },
+        {
+          "q": "¿Cómo puedo iniciar una consulta o proyecto?",
+          "a": "Escribí desde la sección Contacto con una descripción breve de tu situación. No hace falta que esté todo claro — muchas veces la primera conversación es la que define qué hace falta."
+        }
+      ]
+    },
+    {
+      "id": "contacto",
+      "label": "Contacto y próximos pasos",
+      "preguntas": [
+        {
+          "q": "¿Cómo puedo contactarte?",
+          "a": "Por mail o WhatsApp desde la sección Contacto del sitio. Si tenés una pregunta concreta, escribí directo. Si no sabés bien qué necesitás, también — a veces eso es lo más honesto."
+        },
+        {
+          "q": "¿Cómo me entero de próximos lanzamientos?",
+          "a": "Suscribiéndote desde el sitio. Los que están en lista son los primeros en enterarse — y a veces los únicos que acceden a precio de prelanzamiento. También podés seguir el proceso en Instagram, donde va apareciendo todo antes de que llegue acá."
+        },
+        {
+          "q": "¿Puedo proponerte una colaboración?",
+          "a": "Sí. Escribí con el contexto de lo que tenés en mente. Si tiene sentido dentro del ecosistema, lo conversamos. Si no, te lo digo directo — sin rodeos y sin hacerte perder el tiempo."
+        },
+        {
+          "q": "¿Dónde sigo el proceso creativo?",
+          "a": "En Instagram principalmente, donde va apareciendo el proceso en tiempo real. Algunos proyectos tienen sus propios canales — Stray Sheep, por ejemplo, tiene su propio universo."
+        }
+      ]
+    }
+  ]
+}

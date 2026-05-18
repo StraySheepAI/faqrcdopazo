@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — R.C. Dopazo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cinzel:wght@400;500&family=Cinzel+Decorative:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0d0618;
+      --bg-card:      rgba(20,10,38,0.72);
+      --bg-card-open: rgba(28,14,50,0.88);
+      --gold:         #7a6235;
+      --gold-light:   #a8895a;
+      --gold-glow:    rgba(120,98,53,0.18);
+      --gold-border:  rgba(120,98,53,0.28);
+      --gold-border-h:rgba(120,98,53,0.6);
+      --pink:         #e870a0;
+      --pink-dim:     rgba(232,112,160,0.15);
+      --text:         #ede6d6;
+      --text-muted:   #a097b4;
+      --star1:        rgba(120,98,53,0.5);
+      --star2:        rgba(232,112,160,0.35);
+      --star3:        rgba(255,255,255,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Cosmic background ── */
+    .cosmos { position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+    .cosmos-gradient {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 10%, rgba(80,20,120,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(120,40,80,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 50% 50%, rgba(40,10,70,0.4) 0%, transparent 80%);
+    }
+    .stars { position:absolute; inset:0; }
+    .stars::before, .stars::after { content:''; position:absolute; inset:0; }
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 8% 12%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 18% 72%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 25% 35%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 33% 88%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 42% 18%, var(--star2) 0%, transparent 100%),
+        radial-gradient(2px 2px at 50% 55%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 58% 80%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 28%, var(--star2) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 72% 65%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 10%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 45%, var(--star2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 93% 90%, var(--star1) 0%, transparent 100%);
+    }
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 5% 50%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14% 25%, var(--star2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 28% 60%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 37% 5%, var(--star2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 47% 42%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 3%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 63% 95%, var(--star3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 70% 38%, var(--star2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 72%, var(--star1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 22%, var(--star3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 96% 58%, var(--star2) 0%, transparent 100%);
+    }
+
+    /* ── Layout ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 5rem 2rem 7rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .header-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      opacity: 0.7;
+    }
+    .header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem,4vw,2.8rem);
+      font-weight: 400;
+      color: var(--gold-light);
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      margin-bottom: 0;
+    }
+    .header-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 1.5rem auto;
+    }
+    .orn-line { width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--gold)); }
+    .orn-line.right { background:linear-gradient(90deg,var(--gold),transparent); }
+    .orn-diamond { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); opacity:0.7; }
+    .header p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      max-width: 420px;
+      margin: 0 auto;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* ── Mini índice de chips ── */
+    .nav-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.7s ease 0.15s both;
+    }
+    .chip {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 20px;
+      padding: 0.35rem 0.9rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      opacity: 0.7;
+      background: rgba(120,98,53,0.05);
+    }
+    .chip:hover {
+      opacity: 1;
+      border-color: var(--gold-border-h);
+      background: rgba(120,98,53,0.12);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    /* ── Section ── */
+    .faq-section {
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s ease both;
+      scroll-margin-top: 2rem;
+    }
+    .faq-section:nth-child(1) { animation-delay: 0.1s; }
+    .faq-section:nth-child(2) { animation-delay: 0.2s; }
+    .faq-section:nth-child(3) { animation-delay: 0.3s; }
+    .faq-section:nth-child(4) { animation-delay: 0.4s; }
+    .faq-section:nth-child(5) { animation-delay: 0.5s; }
+    .faq-section:nth-child(6) { animation-delay: 0.6s; }
+    .faq-section:nth-child(7) { animation-delay: 0.7s; }
+    .faq-section:nth-child(8) { animation-delay: 0.8s; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .section-dot { width:4px; height:4px; background:var(--pink); border-radius:50%; flex-shrink:0; }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--pink);
+      opacity: 0.75;
+    }
+    .section-rule { flex:1; height:1px; background:linear-gradient(90deg,var(--pink-dim),transparent); }
+
+    /* ── FAQ item ── */
+    .faq-item {
+      border: 0.5px solid var(--gold-border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .faq-item:hover { border-color:var(--gold-border-h); box-shadow:0 0 20px var(--gold-glow); }
+    .faq-item.open { border-color:var(--gold-border-h); background:var(--bg-card-open); box-shadow:0 0 28px var(--gold-glow); }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 17px 20px;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: inherit;
+      font-family: inherit;
+    }
+    .faq-q:focus-visible { outline: 1px solid var(--gold); outline-offset: -2px; }
+    .faq-q-text {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+    .faq-icon {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+      transition: transform 0.35s ease, opacity 0.2s;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); opacity: 1; }
+
+    .faq-a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.85;
+      letter-spacing: 0.01em;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
+    }
+    .faq-item.open .faq-a {
+      max-height: 600px;
+      padding: 0 20px 18px;
+      border-top: 0.5px solid var(--gold-border);
+    }
+    .faq-a a {
+      color: var(--pink);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .faq-a a:hover { opacity: 1; text-decoration: underline; }
+    .faq-a strong { color: var(--text); font-weight: 500; }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 3.5rem 0;
+    }
+    .div-line { flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--gold-border)); }
+    .div-line.r { background:linear-gradient(90deg,var(--gold-border),transparent); }
+    .div-symbol { font-family:'Cinzel',serif; font-size:11px; color:var(--gold); opacity:0.5; letter-spacing:0.2em; }
+
+    /* ── Footer CTA ── */
+    .footer { text-align: center; }
+    .footer-intro {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.8;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+    }
+    .footer-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border: 0.5px solid var(--gold-border);
+      border-radius: 20px;
+      padding: 0.5rem 1.2rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      background: rgba(120,98,53,0.06);
+    }
+    .footer-btn:hover {
+      border-color: var(--gold-border-h);
+      background: rgba(120,98,53,0.15);
+      box-shadow: 0 0 14px var(--gold-glow);
+      color: var(--text);
+    }
+    .footer-btn.pink {
+      color: var(--pink);
+      border-color: rgba(232,112,160,0.3);
+      background: rgba(232,112,160,0.05);
+    }
+    .footer-btn.pink:hover {
+      border-color: rgba(232,112,160,0.6);
+      background: rgba(232,112,160,0.12);
+      box-shadow: 0 0 14px rgba(232,112,160,0.2);
+    }
+    .footer-mantra {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page { padding: 3rem 1.25rem 5rem; }
+      .header h1 { font-size: 1.7rem; }
+      .faq-q { padding: 14px 16px; }
+      .faq-item.open .faq-a { padding: 0 16px 16px; }
+      .nav-chips { gap: 0.4rem; }
+      .chip { font-size: 7.5px; padding: 0.3rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cosmos">
+    <div class="cosmos-gradient"></div>
+    <div class="stars"></div>
+  </div>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <p class="header-eyebrow">R.C. Dopazo</p>
+      <h1>Preguntas frecuentes</h1>
+      <div class="header-ornament">
+        <span class="orn-line"></span>
+        <span class="orn-diamond"></span>
+        <span class="orn-line right"></span>
+      </div>
+      <p>Un mapa breve para no perderte entre libros, portales, proyectos, consultoría y alguna que otra patraña luminosa.</p>
+    </div>
+
+    <!-- MINI ÍNDICE -->
+    <nav class="nav-chips" id="nav-chips" aria-label="Índice de secciones">
+      <a class="chip" href="#ecosistema">Ecosistema</a>
+      <a class="chip" href="#mpa">MPA</a>
+      <a class="chip" href="#libros">Libros</a>
+      <a class="chip" href="#portales">Portales</a>
+      <a class="chip" href="#proyectos">Proyectos</a>
+      <a class="chip" href="#flow">MPA Flow</a>
+      <a class="chip" href="#contacto">Contacto</a>
+    </nav>
+
+    <div id="faq-container">
+    <!-- BLOQUE 1: ECOSISTEMA -->
+    <div class="faq-section" id="ecosistema">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">El ecosistema R.C. Dopazo</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué es este sitio?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Este es el espacio central de R.C. Dopazo — autora, creadora y arquitecta de sistemas creativos. Acá conviven libros, universos narrativos, productos digitales, experiencias interactivas, música y una línea de consultoría estratégica. No es solo una tienda. No es solo un blog. Es el mapa de un ecosistema en expansión.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué puedo encontrar acá?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Libros y eBooks, accesos a universos narrativos, experiencias interactivas con QR y portales digitales, cartas y juegos simbólicos, y una línea consultiva orientada a procesos, IA y sistemas. Todo construido bajo el mismo ADN: ver lo invisible, jugar con conciencia y transformar.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo se conectan los libros, la consultoría, la tecnología y MPA?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Son puertas del mismo edificio. MPA es la marca madre que les da coherencia — una filosofía de transformación aplicada a distintos formatos. Un libro de Stray Sheep, una sesión de MPA Flow y una experiencia interactiva pueden parecer cosas distintas, pero comparten el mismo principio: detectar fricción, ordenar el caos y transformar.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Por dónde empiezo si llegué por primera vez?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Depende de lo que te trajo. Si llegaste por los libros, empezá por Stray Sheep. Si llegaste por el universo narrativo, entrá a MPA. Si te interesa la consultoría estratégica con IA y procesos, mirá MPA Flow. Y si no sabés por qué llegaste — eso también es una señal.</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 2: MPA -->
+    <div class="faq-section" id="mpa">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">MPA como marca madre</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué es MPA?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">MPA es la sigla de Magia para Atrevidos — y también es algo más. Es la marca madre del ecosistema. Bajo esa sigla conviven distintas puertas: una línea narrativa y editorial, experiencias interactivas, juegos y cartas simbólicas, y una línea consultiva estratégica. No todas hablan con el mismo tono porque no cumplen la misma función. Todas comparten el mismo ADN.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué diferencia hay entre MPA y Magia para Atrevidos?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a"><strong>Magia para Atrevidos</strong> es el origen simbólico y narrativo. Tiene una carga mística, iniciática y filosófica. <strong>MPA</strong> como sigla permite que el ecosistema se expanda hacia líneas más funcionales, editoriales o profesionales sin perder el ADN. Pensalo como la diferencia entre el nombre completo y el apodo que usás cuando trabajás.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo se organiza el ecosistema MPA?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">En líneas con funciones distintas: <strong>MPA Universo</strong> agrupa la expansión narrativa e iniciática — la puerta más inmersiva. <strong>MPA Editorial</strong> agrupa libros, colecciones y productos editoriales como Stray Sheep y ¡Qué Embole! <strong>MPA Lude</strong> agrupa el aspecto lúdico: tarot, cartas, juegos y guías interactivas. <strong>MPA Flow</strong> es la línea consultiva y estratégica. <strong>MPA Transmuta</strong> vincula experiencias y procesos de cambio.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Necesito entender todo el mapa para empezar?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">No. El mapa existe para orientarte, no para complicarte. Entrás por donde podés y el sistema te va mostrando el resto. Nadie llega sabiendo todo — y los que dicen que sí, generalmente se perdieron lo más interesante.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué significa Evigila · Lude · Transmuta?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Son las tres marcas del sistema MPA. <strong>Evigila</strong>: despertá, mirá, prestá atención. <strong>Lude</strong>: jugá, explorá, no te tomes todo tan en serio. <strong>Transmuta</strong>: cambiá de forma, convertí lo que freina en lo que impulsa. No es un eslogan. Es una secuencia.</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 3: LIBROS -->
+    <div class="faq-section" id="libros">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">Libros, eBooks y productos digitales</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué libros o productos digitales puedo comprar?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Por ahora el primer título de la colección Stray Sheep — <strong>¡Qué Embole!</strong> — está en prelanzamiento. Podés reservar tu lugar con precio exclusivo antes del lanzamiento oficial. Pronto se suman más títulos de la línea editorial MPA. <!-- REEMPLAZAR: agregar link a la tienda cuando esté disponible --></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué es ¡Qué Embole!?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">El primer título de la colección Stray Sheep. Una historia gráfica, breve y de filo directo. Una vez que lo leés, no podés desverlo. Incluye accesos a experiencias interactivas, portales digitales y contenido que va más allá de las páginas.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo recibo mi eBook después de comprarlo?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Una vez completada la compra, recibís un mail con el link de descarga al archivo digital. El acceso es inmediato. Si en 30 minutos no llegó nada, revisá la carpeta de spam y, si sigue sin aparecer, escribinos directo.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Puedo leerlo desde el celular?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Sí. El eBook está en formato PDF, compatible con cualquier dispositivo — celular, tablet o computadora. Para aprovechar los accesos interactivos y links internos, recomendamos abrirlo desde un navegador o lector de PDF que soporte links activos.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Puedo imprimir el eBook?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Podés imprimirlo para uso personal. Los accesos interactivos y QR siguen funcionando desde la versión impresa — en ese caso, escaneás con la cámara del celular en vez de cliquear.</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 4: PORTALES -->
+    <div class="faq-section" id="portales">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">Portales, QR y experiencias interactivas</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué son los portales del libro?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Son accesos dentro del libro que llevan a experiencias digitales complementarias — páginas interactivas, tests, universos narrativos ampliados. El libro no termina en la última página. Es una puerta, no un destino.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo funcionan los QR y accesos dentro del libro?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">En la <strong>versión impresa</strong>: escaneás el QR con la cámara del celular y se abre directamente en el navegador. En la <strong>versión digital</strong>: los accesos señalados son links activos — tocás o clicás y van solos. Si tu lector de PDF no abre los links, probá desde el navegador o desde otra app lectora.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué hago si un acceso no abre?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Primero probá desde otro visor de PDF, navegador o dispositivo. Si el problema persiste, escribinos con el detalle de qué acceso no abre y desde qué dispositivo. Lo resolvemos.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué es el mini-test de Bolas Tristes?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Una experiencia interactiva dentro del universo MPA. Cuatro preguntas, tres resultados posibles y algo que no se revela hasta el final. Una puerta de entrada al sistema, disfrazada de juego. No spoileamos más que eso.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Las experiencias interactivas tienen costo?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Los portales y accesos incluidos en el libro forman parte de la compra. No tienen costo adicional. Algunas experiencias del ecosistema MPA pueden tener acceso libre o requerir registro — en cada caso se aclara antes de entrar.</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 5: PROYECTOS -->
+    <div class="faq-section" id="proyectos">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">Proyectos creativos</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué es Stray Sheep?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Una línea narrativa y editorial conectada al universo MPA. Su voz es más directa, gráfica y filosa. Stray Sheep no explica lo evidente — lo señala. El primer título es <strong>¡Qué Embole!</strong>, pero hay más en camino.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué relación tiene Stray Sheep con MPA?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Stray Sheep es una de las puertas del ecosistema MPA Editorial. Comparte el ADN — transformación, conciencia, humor seco — pero tiene voz propia. Puede leerse sola, sin saber nada del universo mayor. O puede ser la primera grieta en la patraña.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿También hay música o contenido audiovisual?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Sí. El ecosistema R.C. Dopazo incluye música y contenido audiovisual. Algunas piezas funcionan como extensiones del universo narrativo; otras son proyectos independientes. <!-- REEMPLAZAR: agregar link cuando esté disponible --></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Los proyectos están conectados entre sí?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Sí, aunque cada uno puede recorrerse de forma independiente. Hay referencias cruzadas, personajes que reaparecen, simbologías compartidas. El que entra por una puerta y presta atención, empieza a ver el patrón.</div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 6: MPA FLOW -->
+    <div class="faq-section" id="flow">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">Consultoría · MPA Flow</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Qué es MPA Flow?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">La línea estratégica y consultiva del ecosistema MPA. Toma el mismo principio de fondo — ordenar lo invisible, detectar fricción y transformar sistemas — pero lo aplica a procesos, proyectos, negocios, equipos e integración de IA. Menos portal iniciático, más arquitectura de acción.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿En qué se diferencia MPA Flow de Magia para Atrevidos?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">El lenguaje y la función. Magia para Atrevidos invita a cruzar un portal simbólico. MPA Flow ordena lo que está frente a vos: procesos, decisiones, sistemas, equipos. El ADN es el mismo; la aplicación es distinta. No hace falta creer en la magia para que funcione.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Para quién es la consultoría?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Para creadores, emprendedores, equipos y organizaciones que sienten que algo no fluye — pero no saben exactamente dónde está la fricción. También para quienes quieren integrar IA de forma coherente en sus procesos sin perder la identidad de lo que hacen.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿MPA Flow es solo para empresas?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">No. Trabaja con proyectos personales, marcas individuales, equipos pequeños y organizaciones medianas. Lo que importa no es el tamaño — es que haya un sistema que necesita orden.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo puedo iniciar una consulta o proyecto?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Escribí desde la sección Contacto con una descripción breve de tu situación. No hace falta que esté todo claro — muchas veces la primera conversación es la que define qué hace falta. <!-- REEMPLAZAR: agregar link a contacto --></div>
+      </div>
+    </div>
+
+    <!-- BLOQUE 7: CONTACTO -->
+    <div class="faq-section" id="contacto">
+      <div class="section-header">
+        <span class="section-dot"></span>
+        <span class="section-label">Contacto y próximos pasos</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo puedo contactarte?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Por mail o WhatsApp desde la sección Contacto del sitio. Si tenés una pregunta concreta, escribí directo. Si no sabés bien qué necesitás, también — a veces eso es lo más honesto. <!-- REEMPLAZAR: agregar link a contacto --></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Cómo me entero de próximos lanzamientos?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Suscribiéndote desde el sitio. Los que están en lista son los primeros en enterarse — y a veces los únicos que acceden a precio de prelanzamiento. También podés seguir el proceso en Instagram, donde va apareciendo todo antes de que llegue acá. <!-- REEMPLAZAR: agregar link a Instagram y suscripción --></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Puedo proponerte una colaboración?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">Sí. Escribí con el contexto de lo que tenés en mente. Si tiene sentido dentro del ecosistema, lo conversamos. Si no, te lo digo directo — sin rodeos y sin hacerte perder el tiempo.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+          <span class="faq-q-text">¿Dónde sigo el proceso creativo?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a">En Instagram principalmente, donde va apareciendo el proceso en tiempo real. Algunos proyectos tienen sus propios canales — Stray Sheep, por ejemplo, tiene su propio universo. <!-- REEMPLAZAR: agregar links --></div>
+      </div>
+    </div>
+
+    </div><!-- /faq-container -->
+    <div class="divider">
+      <span class="div-line"></span>
+      <span class="div-symbol">· · ·</span>
+      <span class="div-line r"></span>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p class="footer-intro">Si todavía no sabés por dónde entrar, escribime.<br/>A veces el mapa aparece después de tocar la primera puerta.</p>
+      <div class="footer-ctas">
+        <a class="footer-btn" href="#" target="_top"><!-- REEMPLAZAR: link a MPA -->Explorar MPA →</a>
+        <a class="footer-btn pink" href="#" target="_top"><!-- REEMPLAZAR: link a tienda -->Ver libros y productos →</a>
+        <a class="footer-btn" href="#" target="_top"><!-- REEMPLAZAR: link a contacto -->Consultar por MPA Flow →</a>
+      </div>
+      <div class="footer-mantra">Evigila · Lude · Transmuta</div>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Toggle acordeón ──
+    function toggle(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // ── Render desde JSON ──
+    async function loadFAQ() {
+      try {
+        const res = await fetch('faq-data.json?' + Date.now());
+        const data = await res.json();
+        renderFAQ(data);
+      } catch(e) {
+        // Si no carga el JSON, el contenido estático ya está en el HTML
+        console.warn('No se pudo cargar faq-data.json, usando contenido estático.');
+      }
+    }
+
+    function renderFAQ(data) {
+      const container = document.getElementById('faq-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      // Actualizar chips de navegación
+      const chipsEl = document.getElementById('nav-chips');
+      if (chipsEl) {
+        chipsEl.innerHTML = data.secciones.map(s =>
+          `<a class="chip" href="#${s.id}">${s.label.split(' ')[0]}</a>`
+        ).join('');
+      }
+
+      data.secciones.forEach(sec => {
+        const section = document.createElement('div');
+        section.className = 'faq-section';
+        section.id = sec.id;
+        section.setAttribute('style', 'scroll-margin-top:2rem');
+
+        const qs = sec.preguntas.map(p => `
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false" onclick="toggle(this)">
+              <span class="faq-q-text">${escHTML(p.q)}</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a">${escHTML(p.a)}</div>
+          </div>
+        `).join('');
+
+        section.innerHTML = `
+          <div class="section-header">
+            <span class="section-dot"></span>
+            <span class="section-label">${escHTML(sec.label)}</span>
+            <span class="section-rule"></span>
+          </div>
+          ${qs}
+        `;
+        container.appendChild(section);
+      });
+    }
+
+    function escHTML(str) {
+      return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    loadFAQ();
+  </script>
+
+</body>
+</html>
